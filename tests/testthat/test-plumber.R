@@ -3,6 +3,7 @@ root_path <- "http://localhost"
 
 api1 <- callr::r_bg(
   function() {
+    devtools::load_all()
     pr <- plumber::plumb(system.file("plumber", "api1", "plumber.R", package = "plumbpkg"))
     pr$run(port = 8000)
   }
@@ -10,6 +11,7 @@ api1 <- callr::r_bg(
 
 api2 <- callr::r_bg(
   function() {
+    devtools::load_all()
     pr <- plumber::plumb(dir = system.file("plumber", "api2", package = "plumbpkg"))
     pr$run(port = 8001)
   }
